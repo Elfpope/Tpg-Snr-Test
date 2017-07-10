@@ -1,4 +1,4 @@
-package com.tpg.ip.util;
+package com.tpg.ip;
 
 import java.io.BufferedReader;
 import java.io.IOException;

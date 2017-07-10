@@ -9,4 +9,10 @@ public class Constants
 
 	public static final int MINIMUM_IP_PORTION_NUMBER = 0;
 	public static final int MAXIMUM_IP_PORTION_NUMBER = 255;
+
+	public static final int NUMBER_OF_INVOCATIONS = 2000;
+
+	public static final int ONE_MILLION = 1000000;
+
+	public static final int NUMBER_OF_DECIMAL_PLACES = 4;
 }

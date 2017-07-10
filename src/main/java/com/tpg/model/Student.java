@@ -6,6 +6,11 @@ public class Student
 	private String name;
 	private double gpa;
 
+	public Student()
+	{
+		this(10000, "dummy student", 4.85);
+	}
+
 	public Student(int id, String name, double gpa)
 	{
 		this.id = id;
