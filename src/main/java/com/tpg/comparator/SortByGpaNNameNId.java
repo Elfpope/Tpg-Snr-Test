@@ -1,34 +1,22 @@
 package com.tpg.comparator;
 
-import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
 
 import com.tpg.model.Student;
 
+/**
+ * Sort {@link Student} with the following rules:
+ * <ul>
+ * <li>firstly by descending GPA ;</li>
+ * <li>secondly by ascending name;</li>
+ * <li>thirdly by ascending Id</li>
+ * <ul>
+ * 
+ * @author jun.feng
+ *
+ */
 public class SortByGpaNNameNId implements Comparator<Student>
 {
-
-	public static void main(String[] args)
-	{
-		List<Student> students = new ArrayList<>();
-
-		students.add(new Student(33, "Tina", 3.68));
-		students.add(new Student(85, "Louis", 3.85));
-		students.add(new Student(56, "Samil", 3.75));
-		students.add(new Student(19, "Samar", 3.75));
-		students.add(new Student(22, "Lorry", 3.76));
-		students.add(new Student(19, "Samar", 3.75));
-
-		System.out.println("\n----- Before sorted: -----");
-		students.forEach(item -> System.out.println(item));
-
-		students.sort(new SortByGpaNNameNId());
-
-		System.out.println("\n----- After sorted: -----");
-		students.forEach(item -> System.out.println(item));
-	}
-
 	/**
 	 * Compares 2 students and consider student1 proceeds student2 with below rules:
 	 * <ul>

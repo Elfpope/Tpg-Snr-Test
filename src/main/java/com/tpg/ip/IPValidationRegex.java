@@ -1,50 +1,25 @@
 package com.tpg.ip;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.tpg.common.Constants;
 
+/**
+ * Check if the numeric IP address is valid.
+ * 
+ * @author jun.feng
+ *
+ */
 public class IPValidationRegex
 {
-	public static void main(String[] args)
-	{
-		List<String> validIPs = new ArrayList<>();
-		List<String> invalidIPs = new ArrayList<>();
-
-		String fileName = Constants.IP_ADDRESS_FILE;
-		InputStream is = IPValidationRegex.class.getResourceAsStream(fileName);
-		try (BufferedReader br = new BufferedReader(new InputStreamReader(is)))
-		{
-			String currentLine;
-			while ((currentLine = br.readLine()) != null)
-			{
-				if (isValidIpPattern(currentLine) && isValidIpRange(currentLine))
-				{
-					validIPs.add(currentLine);
-				}
-				else
-				{
-					invalidIPs.add(currentLine);
-				}
-			}
-		}
-		catch (IOException e)
-		{
-			System.out.println(String.format("Error is encountered during reading file [%s].", fileName));
-		}
-
-		System.out.println("Valid IPs: " + validIPs);
-		System.out.println("Invalid IPs: " + invalidIPs);
-	}
-
+	/**
+	 * Check if the IP string matches the numeric IP pattern.
+	 * 
+	 * @param ipStr to check
+	 * @return {@code true} if the IP string matches the numeric IP pattern; otherwise {@code false}
+	 */
 	public static boolean isValidIpPattern(String ipStr)
 	{
 		if (ipStr == null)
@@ -58,6 +33,12 @@ public class IPValidationRegex
 		return matcher.matches();
 	}
 
+	/**
+	 * Check all 4 numeric IP portions are within range 0~255.
+	 * 
+	 * @param ipStr the full numeric IP string representation
+	 * @return {@code true} if all 4 numeric IP portions are within range 0~255; otherwise {@code false}
+	 */
 	public static boolean isValidIpRange(String ipStr)
 	{
 		if (ipStr == null)
@@ -78,6 +59,12 @@ public class IPValidationRegex
 		return true;
 	}
 
+	/**
+	 * Check if the individual IP portion is within the range 0~255.
+	 * 
+	 * @param ipPortion to be checked
+	 * @return {@code true} if it is within the range 0~255; otherwise {@code false}
+	 */
 	private static boolean isValidIpPortion(int ipPortion)
 	{
 		return ipPortion >= Constants.MINIMUM_IP_PORTION_NUMBER && ipPortion <= Constants.MAXIMUM_IP_PORTION_NUMBER;
